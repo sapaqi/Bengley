@@ -348,6 +348,10 @@ function setupParallax() {
       const visible = bounds.bottom > 0 && bounds.top < viewportHeight;
 
       frame.offset = visible ? frame.offset + (target - frame.offset) * smoothing : target;
+      if (frame.hero) {
+        // Keep the full draft crop and place any uncovered area above the viewport.
+        frame.offset = Math.min(frame.offset, Math.max(0, -bounds.top));
+      }
       if (Math.abs(target - frame.offset) > .1) moving = true;
       frame.element.style.setProperty("--parallax-y", `${frame.offset.toFixed(2)}px`);
     });
