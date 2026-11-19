@@ -1,10 +1,17 @@
 {
-  "name": "mcgarrell-reilly-website",
-  "private": true,
-  "type": "module",
+  "name": "mcgarrell-reilly-prototype",
+  "version": "1.0.0",
+  "description": "McGarrell Reilly HTML prototype (Tailwind), section catalogue for the WordPress build",
   "scripts": {
-    "dev": "node server.mjs",
-    "build": "node build-pages.mjs",
-    "check": "node --check app.js && node --check pages.js && node --check page-manifest.js && node --check build-pages.mjs && node --check detail-pages.mjs && node --check final-pages.mjs && node --check server.mjs"
-  }
+    "build": "node build.mjs",
+    "watch:css": "tailwindcss -i src/css/app.css -o site/assets/css/app.css --watch",
+    "serve": "python3 -m http.server 4173 -d site"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "image-size": "^2.1.0",
+    "tailwindcss": "^4.3.5"
+  },
+  "private": true,
+  "type": "module"
 }

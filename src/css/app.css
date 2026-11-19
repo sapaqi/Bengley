@@ -1,0 +1,510 @@
+/*
+ * McGarrell Reilly — Tailwind entry point.
+ *
+ * Brand values live in CSS custom properties under [data-brand]. Every colour,
+ * font and fluid size used by the templates is read from those properties, so a
+ * second brand (Fajon) only needs its own [data-brand="fajon"] block below.
+ */
+@import "tailwindcss" source(none);
+
+@source "../";
+
+/* ------------------------------------------------------------------ */
+/* Breakpoints: mobile first.                                          */
+/*   base  < 768   mobile                                              */
+/*   md   >= 768   tablet                                              */
+/*   lg   >= 1000  large tablet                                        */
+/*   xl   >= 1200  desktop                                             */
+/*   2xl  >= 1761  wide desktop                                        */
+/* ------------------------------------------------------------------ */
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 380px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1761px;
+
+  --ease-brand: cubic-bezier(.22, 1, .36, 1);
+  --ease-reveal: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Theme tokens point at the brand properties, so utilities follow the brand. */
+@theme inline {
+  --color-*: initial;
+  --color-primary: var(--brand-primary);
+  --color-accent: var(--brand-accent);
+  --color-surface: var(--brand-surface);
+  --color-surface-strong: var(--brand-surface-strong);
+  --color-surface-alt: var(--brand-surface-alt);
+  --color-green: var(--brand-green);
+  --color-ink: var(--brand-ink);
+  --color-heading-alt: var(--brand-heading-alt);
+  --color-meta: var(--brand-meta);
+  --color-link-hover: var(--brand-link-hover);
+  --color-quote: var(--brand-quote);
+  --color-border: var(--brand-border);
+  --color-rule: var(--brand-rule);
+  --color-outline: var(--brand-outline);
+  --color-chip: var(--brand-chip);
+  --color-dot: var(--brand-dot);
+  --color-glass: var(--brand-glass);
+  --color-shade: var(--brand-shade);
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--brand-font);
+  --font-serif: var(--brand-font-quote);
+
+  /* Fluid type scale (desktop values; mobile overrides below). */
+  --text-body: var(--fs-body);
+  --text-intro: var(--fs-intro);
+  --text-section: var(--fs-section);
+  --text-project: var(--fs-project);
+  --text-subheading: var(--fs-subheading);
+  --text-hero: var(--fs-hero);
+  --text-nav: var(--fs-nav);
+  --text-news-date: var(--fs-news-date);
+  --text-news-title: var(--fs-news-title);
+  --text-page-title: var(--fs-page-title);
+
+  /* Vertical rhythm. */
+  --spacing-section: var(--space-section);
+  --spacing-gap: var(--space-gap);
+  --spacing-content: var(--space-content);
+  --spacing-header: var(--header-offset);
+}
+
+@layer base {
+  @font-face {
+    font-family: "Libre Franklin";
+    src: url("../fonts/LibreFranklin-Variable.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ---------------- Brand: McGarrell Reilly (default) ---------------- */
+  :root,
+  [data-brand="mcgr"] {
+    --brand-font: "Libre Franklin", Arial, sans-serif;
+    --brand-font-quote: Georgia, "Times New Roman", serif;
+    --brand-primary: #232c64;
+    --brand-accent: #00aeef;
+    --brand-surface: #d9f3fd;
+    --brand-surface-strong: #b2e6f8;
+    --brand-surface-alt: #eaebf0;
+    --brand-green: #2b6545;
+    --brand-ink: #000;
+    --brand-heading-alt: #575756;
+    --brand-meta: #6e6e6e; /* 5.1:1 on white (was #777, 4.48:1) */
+    --brand-link-hover: #007eae;
+    --brand-quote: #77799a;
+    --brand-border: #999;
+    --brand-rule: #777;
+    --brand-outline: #80978a;
+    --brand-chip: #eee;
+    --brand-dot: #bfbfbf;
+    --brand-glass: rgb(255 255 255 / 86%);
+    --brand-shade: rgb(12 29 67);
+  }
+
+  /* ---------------- Brand: Fajon (values to be approved) -------------- */
+  [data-brand="fajon"] {
+    /* Same token names as McGR. Replace the values once the Fajon
+       direction is approved; templates need no changes. */
+  }
+
+  /* ---------------- Fluid sizes ---------------- */
+  :root {
+    --fs-body: 16px;
+    --fs-intro: 18px;
+    --fs-section: clamp(32px, 8.7vw, 42px);
+    --fs-project: 28px;
+    --fs-subheading: 32px;
+    --fs-hero: clamp(29px, 7.8vw, 42px);
+    --fs-nav: 16px;
+    --fs-news-date: 15px;
+    --fs-news-title: 19px;
+    --fs-page-title: clamp(50px, 13vw, 76px);
+    --space-section: 68px;
+    --space-gap: 70px;
+    --space-content: 28px;
+    --gutter: 6%;
+    --header-top: 16px;
+    --header-offset: 130px;
+    --duration: 280ms;
+    --reveal-duration: 950ms;
+    --image-reveal-duration: 1500ms;
+    --parallax-scale: 1.36;
+  }
+  @media (width < 360px) {
+    :root { --fs-section: 31px; --fs-hero: 27px; }
+  }
+  @media (width >= 768px) {
+    :root {
+      --fs-body: clamp(16px, 1.023vw, 18px);
+      --fs-intro: clamp(18px, 1.25vw, 22px);
+      --fs-section: 34px;
+      --fs-project: clamp(27px, 2.273vw, 40px);
+      --fs-subheading: clamp(28px, 2.614vw, 46px);
+      --fs-hero: clamp(32px, 3.4vw, 41px);
+      --fs-nav: 10px;
+      --fs-news-date: clamp(18px, 1.42vw, 25px);
+      --fs-news-title: clamp(20px, 1.591vw, 28px);
+      --fs-page-title: clamp(58px, 7.386vw, 130px);
+      --space-section: 90px;
+      --space-gap: clamp(80px, 7.955vw, 140px);
+      --space-content: clamp(28px, 3.409vw, 60px);
+      --header-top: clamp(18px, 1.705vw, 30px);
+      --header-offset: calc(var(--header-top) + 95px);
+    }
+  }
+  @media (width >= 1000px) {
+    :root { --fs-section: clamp(36px, 3.409vw, 60px); --fs-nav: 12px; }
+  }
+  @media (width >= 1200px) {
+    :root {
+      --fs-hero: clamp(30px, 2.955vw, 52px);
+      --fs-nav: clamp(13px, .909vw, 16px);
+      --space-section: clamp(80px, 7.955vw, 140px);
+      --gutter: 10%;
+      --header-offset: calc(var(--header-top) + clamp(118px, 6.818vw, 120px));
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 105px;
+  }
+  @media (width >= 768px) {
+    html { scroll-padding-top: 130px; }
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.889;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; }
+  button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  button:disabled { cursor: default; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 6px; }
+  ::selection { background: var(--color-primary); color: var(--color-white); }
+  address { font-style: normal; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Custom utilities                                                    */
+/* ------------------------------------------------------------------ */
+
+/* Page container: 10% gutters on desktop, 6% below 1200px, max 1408px. */
+@utility wrap {
+  width: calc(100% - var(--gutter) * 2);
+  max-width: 1408px;
+  margin-inline: auto;
+}
+
+/* Shared heading styles. */
+@utility type-section {
+  color: var(--color-primary);
+  font-size: var(--text-section);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+@utility type-subheading {
+  font-size: var(--text-subheading);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+@utility type-project {
+  font-size: var(--text-project);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.035em;
+}
+@utility type-intro {
+  font-size: var(--text-intro);
+  line-height: 1.65;
+  letter-spacing: -.025em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Components that need pseudo-elements, state or motion               */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Text link with arrow icon. */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    transition: color 180ms;
+  }
+  @media (width >= 768px) {
+    .text-link { gap: 18px; font-size: var(--text-body); }
+  }
+  .text-link__arrow {
+    flex-shrink: 0;
+    width: 22px;
+    height: 20px;
+    background: url("../icons/McGR%20Arrow%20DEFAULT.svg") center / contain no-repeat;
+    transition: transform var(--duration);
+  }
+  .text-link:hover { color: var(--color-link-hover); }
+  .text-link:hover .text-link__arrow {
+    transform: translateX(5px);
+    background-image: url("../icons/McGR%20Arrow%20ACTIVE.svg");
+  }
+  .text-link--light .text-link__arrow { filter: invert(1); }
+  .text-link--light:hover { color: var(--color-white); text-decoration-thickness: 2px; }
+  .text-link--light:hover .text-link__arrow { background-image: url("../icons/McGR%20Arrow%20DEFAULT.svg"); }
+
+  /* Round arrow link and paired-icon buttons. */
+  .round-link {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: transform var(--duration);
+  }
+  .round-link img { width: 45px; height: 45px; }
+  .round-link:hover { transform: translateX(5px); }
+
+  .image-button { position: relative; display: grid; place-items: center; padding: 0; border-radius: 50%; background: transparent; }
+  .image-button img { width: 100%; height: 100%; transition: opacity 160ms; }
+  .image-button .icon-active { position: absolute; inset: 0; opacity: 0; }
+  .image-button:hover .icon-active,
+  .image-button:focus-visible .icon-active { opacity: 1; }
+
+  .solid-button {
+    display: block;
+    min-width: 190px;
+    padding: 16px 30px;
+    border-radius: 4px;
+    color: var(--color-white);
+    background: var(--color-accent);
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    transition: background var(--duration);
+  }
+  @media (width >= 768px) {
+    .solid-button { min-width: 220px; padding: 18px 40px; font-size: 18px; }
+  }
+  .solid-button:hover { background: var(--color-primary); }
+
+  /* Carousel dots. --dot / --dot-active set the colours per component. */
+  .carousel-dot {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 40px;
+    padding: 0;
+    border-radius: 20px;
+    background: transparent;
+  }
+  .carousel-dot::before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--dot, var(--color-white));
+    transition: background var(--duration), transform var(--duration);
+  }
+  @media (width >= 768px) {
+    .carousel-dot { width: 34px; }
+    .carousel-dot::before { width: 14px; height: 14px; }
+  }
+  .carousel-dot[aria-pressed="true"]::before { background: var(--dot-active, var(--color-primary)); }
+  .carousel-dot:hover::before { transform: scale(1.2); }
+
+  /* Filter chips and switches (Portfolio). */
+  .filter-chip { position: relative; display: block; cursor: pointer; }
+  .filter-chip input { position: absolute; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .filter-chip span { display: block; padding: 7px 13px; border-radius: 30px; background: var(--color-chip); font-size: 13px; line-height: 1.5; }
+  @media (width >= 768px) {
+    .filter-chip span { padding: 6px 20px; font-size: 14px; }
+  }
+  .filter-chip input:checked + span { background: var(--color-surface-strong); }
+  .filter-chip input:focus-visible + span { outline: 3px solid var(--color-accent); outline-offset: 4px; }
+  .filter-switch { position: relative; display: flex; align-items: center; gap: 12px; font-size: 15px; cursor: pointer; }
+  .filter-switch input { position: absolute; right: 0; width: 55px; height: 30px; margin: 0; opacity: 0; cursor: pointer; }
+  .filter-switch > span { display: block; width: 55px; height: 28px; padding: 3px; border-radius: 25px; background: var(--color-primary); }
+  .filter-switch > span::before { content: ""; display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--color-white); transition: transform 180ms, background 180ms; }
+  .filter-switch input:checked + span::before { transform: translateX(27px); background: var(--color-surface-strong); }
+  .filter-switch input:focus-visible + span { outline: 3px solid var(--color-accent); outline-offset: 4px; }
+
+  /* Pill select (news year / publication type). */
+  .pill-select { position: relative; flex-shrink: 0; }
+  .pill-select::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border: solid #333;
+    border-width: 0 1px 1px 0;
+    transform: translateY(-75%) rotate(45deg);
+    pointer-events: none;
+  }
+  .pill-select select {
+    display: block;
+    appearance: none;
+    width: 145px;
+    min-height: 34px;
+    padding: 6px 38px 6px 20px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--color-chip);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #222;
+    cursor: pointer;
+  }
+
+  /* Photo frame (states are below, unlayered). */
+  .photo { position: relative; width: 100%; min-width: 0; overflow: hidden; }
+  .photo__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .image-reveal { position: absolute; inset: -2px; overflow: hidden; }
+  .image-reveal__content { position: absolute; inset: 0; }
+
+  /* News row arrow (home). */
+  .news-row__arrow {
+    align-self: center;
+    width: 21px;
+    height: 22px;
+    background: url("../icons/McGR%20Arrow%20ACTIVE.svg") center / contain no-repeat;
+    transition: transform var(--duration), opacity var(--duration);
+  }
+  @media (width >= 768px) {
+    .news-row__arrow { width: 24px; opacity: 0; transform: translateX(-8px); }
+    .news-row:hover .news-row__arrow,
+    .news-row:focus-visible .news-row__arrow { opacity: 1; transform: translateX(0); }
+  }
+  .card-arrow {
+    width: 25px;
+    height: 22px;
+    background: url("../icons/McGR%20Arrow%20DEFAULT.svg") center / contain no-repeat;
+    transition: transform var(--duration);
+  }
+  .group:hover .card-arrow { transform: translateX(6px); }
+
+  /* Responsibility bullet markers (job page). */
+  .bullets li::marker { color: var(--color-primary); font-size: .6em; }
+
+  /* Contact map pin drawn in CSS. */
+  .map-pin::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    width: 32px;
+    height: 32px;
+    border-radius: 50% 50% 50% 0;
+    background: radial-gradient(circle at center, white 0 23%, var(--color-primary) 25%);
+    transform: translate(-50%, -100%) rotate(-45deg);
+    pointer-events: none;
+  }
+
+  /* Rich text (Terms, Privacy). */
+  .prose-rich h2 { margin-top: 25px; font-size: 24px; font-weight: 500; line-height: 1.4; }
+  @media (width >= 768px) {
+    .prose-rich h2 { font-size: clamp(23px, 1.591vw, 28px); line-height: 1.5; }
+  }
+  .prose-rich p + p,
+  .prose-rich ul + p,
+  .prose-rich p + ul { margin-top: 25px; }
+  .prose-rich ul { padding-left: 20px; list-style: disc; }
+  .prose-rich a { text-decoration: underline; }
+}
+
+
+/* ------------------------------------------------------------------ */
+/* State rules (unlayered so they win over utility classes)            */
+/* ------------------------------------------------------------------ */
+/* Header shrink state (toggled by JS above 80px scroll). */
+.site-header { transition: min-height var(--duration) var(--ease-brand), padding var(--duration) var(--ease-brand), box-shadow var(--duration); }
+.brand { transition: width var(--duration) var(--ease-brand), height var(--duration) var(--ease-brand); }
+.brand__full, .brand__symbol { transition: opacity 180ms; }
+.site-header.is-shrunk { min-height: 60px; padding-block: 12px; box-shadow: 0 3px 18px rgb(0 0 0 / 5%); }
+.site-header.is-shrunk .brand { width: 35px; height: 35px; }
+.site-header.is-shrunk .brand__full { opacity: 0; pointer-events: none; }
+.site-header.is-shrunk .brand__symbol { opacity: 1; }
+.site-header.is-shrunk .menu-toggle { min-height: 35px; padding-block: 4px; }
+@media (width >= 768px) {
+  .site-header.is-shrunk .primary-nav a { padding-block: 4px; }
+}
+@media (width < 768px) {
+  .js .primary-nav { display: none; }
+  .js .site-header.is-menu-open .primary-nav { display: flex; }
+  .site-header.is-menu-open,
+  html:not(.js) .site-header { max-height: calc(100dvh - 32px); overflow-x: hidden; overflow-y: auto; }
+}
+.menu-toggle__icon span { transition: transform var(--duration), top var(--duration); }
+.is-menu-open .menu-toggle__icon span:first-child { top: 10px; transform: rotate(45deg); }
+.is-menu-open .menu-toggle__icon span:last-child { top: 10px; transform: rotate(-45deg); }
+
+/* ---------------- Photos: reveal + parallax ---------------- */
+/* The frame stays still; a sliding window and counter-moving image layer
+   reveal the photo from halfway up. Content stays visible without JS. */
+.reveal-ready .image-reveal,
+.reveal-ready .image-reveal__content { transition: transform var(--reveal-duration) var(--ease-reveal); }
+.reveal-ready .image-reveal { transform: translateY(50%); }
+.reveal-ready .image-reveal__content { transform: translateY(-50%); }
+.reveal-ready .photo__img { transform: scale(1.2); transition: transform var(--image-reveal-duration) var(--ease-reveal); }
+.reveal-ready.is-visible .image-reveal,
+.reveal-ready.is-visible .image-reveal__content { transform: translateY(0); }
+.reveal-ready:focus-within .image-reveal,
+.reveal-ready:focus-within .image-reveal__content { transform: translateY(0); transition: none; }
+.reveal-ready.is-visible .photo__img { transform: scale(1); }
+
+/* Parallax: only frames marked data-parallax, only while JS adds .has-parallax.
+   Switch off per section (parallax: false) or site-wide with
+   <html data-parallax="off">. */
+.has-parallax .photo__img {
+  translate: 0 var(--parallax-y, 0px);
+  scale: var(--parallax-scale);
+  will-change: translate;
+}
+[data-parallax-anchor="top"] { --parallax-scale: 1.16; }
+[data-parallax-anchor="top"] .photo__img { object-position: center top; transform-origin: center top; }
+.has-parallax[data-parallax-anchor="top"] .photo__img {
+  translate: none;
+  transition: transform var(--image-reveal-duration) var(--ease-reveal), scale 200ms linear;
+}
+[data-section="hero"] .photo { --parallax-scale: 1; }
+
+/* Fade carousels (hero). */
+.fade-slide { opacity: 0; transition: opacity 650ms ease; }
+.fade-slide.is-active { opacity: 1; }
+.is-loading { opacity: .4; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal-ready .image-reveal,
+  .reveal-ready .image-reveal__content,
+  .reveal-ready .photo__img { transform: none; }
+  .has-parallax .photo__img { translate: none; scale: 1; will-change: auto; }
+}
