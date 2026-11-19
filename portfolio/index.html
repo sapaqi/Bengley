@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" data-brand="mcgr">
+<head>
+  <meta charset="utf-8">
+  <base href="../">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#232c64">
+  <meta name="description" content="Property Portfolio — McGarrell Reilly Group.">
+  <title>Property Portfolio | McGarrell Reilly Group</title>
+  <link rel="icon" href="assets/icons/McGR%20logo%20SYMBOL.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/LibreFranklin-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/images/McGR-Home-banner.jpg" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="page-manifest.js" defer></script>
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="final-pages.css">
+  <script src="app.js" defer></script>
+  <script src="pages.js" defer></script>
+</head>
+<body class="subpage page-portfolio">
+  <a class="skip-link" href="portfolio/index.html#main">Skip to content</a>
+
+  <!-- site-wide/header: logo and navigation are global WordPress settings. -->
+  <header class="site-header" id="site-header">
+    <a class="brand" href="index.html" aria-label="McGarrell Reilly Group home">
+      <img class="brand__full" src="assets/icons/McGR%20logo.svg" width="235" height="70" alt="">
+      <img class="brand__symbol" src="assets/icons/McGR%20logo%20SYMBOL.svg" width="35" height="35" alt="">
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" hidden>
+      <span class="menu-toggle__label">Menu</span>
+      <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+    </button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+      <a href="portfolio/index.html" aria-current="page">Portfolio</a>
+      <a href="about-us/index.html">About Us</a>
+      <a href="responsibility/index.html">Responsibility</a>
+      <a href="working-with-us/index.html">Working with us</a>
+      <a href="media/index.html">Media</a>
+      <a href="contact-us/index.html">Contact Us</a>
+    </nav>
+  </header>
+
+<main id="main"><section class="page-hero" aria-labelledby="page-title"><div class="container page-hero__layout">
+    <div class="page-photo page-hero__image" style="aspect-ratio:5/3"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/McGR-Portfolio-Hero.jpg" alt="New homes at Station Road, Lusk" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <h1 class="page-title" id="page-title">Property<br>Portfolio</h1>
+  </div></section><section class="container page-intro" aria-label="Introduction"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></section>    <section class="projects section" id="projects" data-section="projects" data-source="properties" aria-labelledby="projects-heading">
+      <div class="container projects__layout">
+        <div class="projects__content">
+          <h2 class="section-heading" id="projects-heading">Featured <br>Property</h2>
+          <div class="projects__details" id="project-details">
+            <p class="projects__category" id="project-category">Residential</p>
+            <h3 class="projects__title" id="project-title">Station Road, Lusk<br>County Dublin</h3>
+          </div>
+          <a class="text-link" href="portfolio/station-road-lusk/index.html" data-project-detail>View Property<span class="text-link__arrow" aria-hidden="true"></span></a>
+        </div>
+        <div class="projects__visual" aria-roledescription="carousel" aria-label="Property portfolio" tabindex="0">
+          <div class="projects__image-frame" data-reveal>
+            <div class="image-reveal">
+              <div class="image-reveal__content">
+                <a href="portfolio/station-road-lusk/index.html" class="projects__image-link" id="project-link" aria-label="View Station Road, Lusk, County Dublin">
+                  <img class="projects__image" id="project-image" src="assets/images/McGR-Portfolio-Hero.jpg" width="2100" height="1260" alt="New homes at Station Road, Lusk, County Dublin" loading="lazy" decoding="async">
+                </a>
+                <div class="carousel-dots" id="project-controls" aria-label="Choose a project" hidden></div>
+              </div>
+            </div>
+          </div>
+          <p class="sr-only" id="project-status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </section>
+
+
+  <section class="container portfolio-list" aria-labelledby="properties-heading" data-source="properties">
+    <h2 class="section-heading" id="properties-heading">All Properties</h2>
+    <form class="property-filters" aria-label="Filter properties">
+      <fieldset class="category-filters"><legend>Filter</legend>
+        <label class="filter-chip"><input type="radio" name="category" value="all" checked><span>All</span></label><label class="filter-chip"><input type="radio" name="category" value="new-homes" ><span>New Homes</span></label><label class="filter-chip"><input type="radio" name="category" value="commercial" ><span>Commercial</span></label><label class="filter-chip"><input type="radio" name="category" value="pipeline" ><span>Development Pipeline</span></label>
+      </fieldset>
+      <fieldset class="status-filters"><legend class="sr-only">Availability</legend>
+        <label class="filter-switch">For Sale<input type="checkbox" name="status" value="sale" checked><span aria-hidden="true"></span></label>
+        <label class="filter-switch">To Let<input type="checkbox" name="status" value="let"><span aria-hidden="true"></span></label>
+      </fieldset>
+    </form>
+    <ul class="property-items"><li class="property-card " data-category="new-homes" data-status="sale" >
+    <a href="portfolio/station-road-lusk/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-A.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Station Road, Lusk<br>County Dublin</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="commercial" data-status="let" hidden>
+    <a href="portfolio/property-2/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-B.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="commercial" data-status="sale" >
+    <a href="portfolio/property-3/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-C.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="new-homes" data-status="sale" >
+    <a href="portfolio/property-4/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-D.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="new-homes" data-status="sale" >
+    <a href="portfolio/property-5/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-A.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="pipeline" data-status="let" hidden>
+    <a href="portfolio/property-6/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-B.jpg" alt="Development Pipeline property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Development Pipeline</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="new-homes" data-status="sale" >
+    <a href="portfolio/property-7/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-C.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="commercial" data-status="sale" hidden>
+    <a href="portfolio/property-8/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-D.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="commercial" data-status="sale" hidden>
+    <a href="portfolio/property-9/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-A.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="new-homes" data-status="let" hidden>
+    <a href="portfolio/property-10/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-B.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="new-homes" data-status="sale" hidden>
+    <a href="portfolio/property-11/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-C.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="pipeline" data-status="sale" hidden>
+    <a href="portfolio/property-12/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-D.jpg" alt="Development Pipeline property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Development Pipeline</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="new-homes" data-status="sale" hidden>
+    <a href="portfolio/property-13/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-A.jpg" alt="Residential property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Residential</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card property-card--tinted" data-category="commercial" data-status="let" hidden>
+    <a href="portfolio/property-14/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-B.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li>
+<li class="property-card " data-category="commercial" data-status="sale" hidden>
+    <a href="portfolio/property-15/index.html" class="property-card__link"><div class="page-photo " style="aspect-ratio:3/2"  >
+    <div class="image-reveal"><div class="image-reveal__content">
+      <img class="page-photo__image" src="assets/images/property-tile-C.jpg" alt="Commercial property from the McGarrell Reilly portfolio" loading="eager" decoding="async">
+    </div></div>
+  </div>
+    <div class="property-card__content"><p class="property-card__category">Commercial</p><h3>Property Name<br>Address</h3><span class="property-card__arrow" aria-hidden="true"></span></div></a>
+  </li></ul>
+    <p class="property-empty" hidden>No properties match these filters. <button type="button" data-reset-filters>Clear filters</button></p>
+    <p class="sr-only" data-property-status aria-live="polite"></p>
+    <button class="solid-button load-more" type="button" hidden>Load More</button>
+    <noscript><style>.property-card[hidden]{display:block!important}.property-filters{display:none}</style></noscript>
+  </section></main>
+  <!-- site-wide/footer: navigation, address, social URL and legal links. -->
+  <footer class="site-footer" id="contact" data-section="footer">
+    <div class="container site-footer__main">
+      <a class="site-footer__brand" href="index.html" aria-label="McGarrell Reilly Group home"><img src="assets/icons/McGR%20logo%20WHITE.svg" width="270" height="80" alt="McGarrell Reilly Group" loading="lazy"></a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="portfolio/index.html">Portfolio</a><a href="about-us/index.html">About Us</a><a href="responsibility/index.html">Responsibility</a><a href="working-with-us/index.html">Working with us</a><a href="media/index.html">Media</a><a href="contact-us/index.html">Contact Us</a>
+      </nav>
+      <div class="site-footer__contact">
+        <address>31/32 Charlemont Street<br>Dublin 2<br>D02 DK57<br>Ireland</address>
+        <a class="social-link" href="https://www.linkedin.com/company/mcgarrell-reilly-group/" target="_blank" rel="noopener noreferrer">Connect with us<img src="assets/icons/linkedin%20logo%20WHITE.svg" width="26" height="26" alt="LinkedIn (opens in a new tab)"></a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="container site-footer__legal"><div><a href="privacy-statement/">Privacy Statement</a><a href="terms-of-use/index.html">Terms of use</a></div><p>Designed by Begley Hutton</p></div>
+    </div>
+  </footer>
+  <div class="demo-notice" id="demo-notice" role="status" hidden><p>This detail page will be added in the next preview.</p><button type="button" aria-label="Dismiss message">×</button></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 41 29">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #232c64;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x=".5" y=".5" width="40" height="28" rx="2" ry="2"/>
+  <g>
+    <ellipse class="st0" cx="11.8162355" cy="11.2669069" rx="3.3613991" ry="3.3230127"/>
+    <path class="st0" d="M5.2753538,21.0561058c0-3.5711761,2.9284525-6.4661863,6.5408816-6.4661863s6.5408816,2.8950102,6.5408816,6.4661863"/>
+    <line class="st0" x1="21.7204013" y1="21.0561058" x2="31.5706752" y2="21.0561058"/>
+    <line class="st0" x1="21.7204013" y1="14.5899196" x2="35.7246462" y2="14.5899196"/>
+    <line class="st0" x1="21.7204013" y1="7.9438942" x2="35.7246462" y2="7.9438942"/>
+  </g>
+</svg>

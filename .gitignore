@@ -1,0 +1,21 @@
+# Local dependencies and caches
+node_modules/
+.cache/
+.npm/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Generated handover archives and review screenshots
+/*.zip
+/*-preview.jpg
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log

@@ -27,7 +27,7 @@ const demoData = {
       featured: true,
       image: "assets/images/McGR-Portfolio-Hero.jpg",
       alt: "New homes at Station Road, Lusk, County Dublin",
-      url: "portfolio/station-road-lusk/",
+      url: "portfolio/station-road-lusk/index.html",
     },
     {
       id: "property-b",
@@ -39,7 +39,7 @@ const demoData = {
       featured: false,
       image: "assets/images/property-tile-B.jpg",
       alt: "A commercial development from the property portfolio",
-      url: "portfolio/property-b/",
+      url: "portfolio/property-2/index.html",
     },
     {
       id: "property-c",
@@ -51,7 +51,7 @@ const demoData = {
       featured: false,
       image: "assets/images/property-tile-C.jpg",
       alt: "A residential development from the property portfolio",
-      url: "portfolio/property-c/",
+      url: "portfolio/property-3/index.html",
     },
     {
       id: "property-d",
@@ -63,7 +63,7 @@ const demoData = {
       featured: false,
       image: "assets/images/property-tile-D.jpg",
       alt: "A development from the property portfolio",
-      url: "portfolio/property-d/",
+      url: "portfolio/property-4/index.html",
     },
   ],
   news: [
@@ -71,19 +71,19 @@ const demoData = {
       id: "a-new-era-for-dublin-6",
       title: "A new era for Dublin 6. Read about our latest city centre office development.",
       date: "2023-08-16",
-      url: "media/news/a-new-era-for-dublin-6/",
+      url: "media/news/a-new-era-for-dublin-6/index.html",
     },
     {
       id: "city-centre-office-development",
       title: "A new era for Dublin 6. Read about our latest city centre office development.",
       date: "2023-08-16",
-      url: "media/news/city-centre-office-development/",
+      url: "media/news/city-centre-office-development/index.html",
     },
     {
       id: "latest-development",
       title: "A new era for Dublin 6. Read about our latest city centre office development.",
       date: "2023-08-16",
-      url: "media/news/latest-development/",
+      url: "media/news/latest-development/index.html",
     },
     {
       id: "archive",
@@ -234,6 +234,8 @@ function setupProjects() {
     title.replaceChildren(document.createTextNode(project.title), document.createElement("br"), document.createTextNode(project.address));
     category.textContent = project.label;
     link.href = project.url;
+    const detailLink = document.querySelector("[data-project-detail]");
+    if (detailLink) detailLink.href = project.url;
     link.setAttribute("aria-label", `View ${project.title}, ${project.address}`);
     controls.querySelectorAll("button").forEach((button, i) => button.setAttribute("aria-pressed", String(i === target)));
     image.classList.remove("is-loading");
@@ -310,7 +312,7 @@ function setupReveals() {
 }
 
 function setupParallax() {
-  const frames = [...document.querySelectorAll(".hero__images, .projects__image-frame, .feature__image-frame")].map((element) => ({
+  const frames = [...document.querySelectorAll(".hero__images, .projects__image-frame, .feature__image-frame, [data-parallax]")].map((element) => ({
     element,
     hero: element.classList.contains("hero__images"),
     topAnchored: element.dataset.parallaxAnchor === "top",
@@ -389,6 +391,7 @@ function setupParallax() {
 // A standard unmodified click in the demo receives a clear availability message.
 function setupDemoLinks() {
   const notice = document.querySelector("#demo-notice");
+  const availablePages = new Set((window.previewPages || ["index.html"]).map(path => new URL(path, document.baseURI).href));
   let timer;
   notice.querySelector("button").addEventListener("click", () => {
     notice.hidden = true;
@@ -398,8 +401,13 @@ function setupDemoLinks() {
     const link = event.target.closest("a");
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || href === "./" || link.origin !== window.location.origin) return;
+    if (!href || href.startsWith("#") || href === "./" || link.origin !== window.location.origin || !["http:", "https:", "file:"].includes(link.protocol)) return;
+    const target = new URL(link.href);
+    target.hash = "";
+    target.search = "";
+    if (availablePages.has(target.href)) return;
     event.preventDefault();
+    notice.querySelector("p").textContent = link.dataset.demoMessage || "This detail page will be added in the next preview.";
     notice.hidden = false;
     window.clearTimeout(timer);
     timer = window.setTimeout(() => { notice.hidden = true; }, 6500);
@@ -407,9 +415,9 @@ function setupDemoLinks() {
 }
 
 setupHeader();
-setupHero();
-setupProjects();
-renderNews();
+if (document.querySelector("#hero-images")) setupHero();
+if (document.querySelector("#project-controls")) setupProjects();
+if (document.querySelector("#news-items")) renderNews();
 setupReveals();
 setupParallax();
 setupDemoLinks();

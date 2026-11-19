@@ -1,9 +1,10 @@
 {
-  "name": "mcgarrell-reilly-homepage",
+  "name": "mcgarrell-reilly-website",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node server.mjs",
-    "check": "node --check app.js && node --check server.mjs"
+    "build": "node build-pages.mjs",
+    "check": "node --check app.js && node --check pages.js && node --check page-manifest.js && node --check build-pages.mjs && node --check detail-pages.mjs && node --check final-pages.mjs && node --check server.mjs"
   }
 }
