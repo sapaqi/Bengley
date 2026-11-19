@@ -147,3 +147,6 @@ The final five layouts were checked at 320, 390, 768 and 1760px widths with no h
 ## Navigation fix — 19 November 2026
 
 The availability handler now intercepts only explicitly marked missing content. Normal navigation no longer depends on `page-manifest.js`, and that script is no longer loaded by HTML pages. Replace the complete repository contents with the corrected package so the shared script and all generated pages stay in sync. The Netlify version inspected before this fix still contained older directory-style links. Hosted Portfolio itself was available when opened directly. Local browser checks covered Home → Portfolio, Media → Latest news and footer → Terms of use. The missing Privacy Statement notice remains intentional. An additional 56 regression checks covered absent/stale manifests, hosted repository subpaths, file previews, modified clicks and marked downloads.
+
+
+Logo navigation is resolved at runtime from the root-level app.js URL. This avoids host HTML pretty-URL rewriting of index.html links on nested pages, while retaining repository prefixes and file previews. Header and footer logo clicks were verified locally from Portfolio and a nested article. The live Netlify deployment must be updated to receive this change.

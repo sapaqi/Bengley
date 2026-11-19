@@ -389,6 +389,15 @@ function setupParallax() {
 
 // Only explicitly marked, unsupplied content receives an availability message.
 // Normal navigation must work even when the optional route manifest is unavailable.
+function setupHomeLinks() {
+  // Resolve from the root-level script, not HTML links rewritten by a host's
+  // pretty-URL processing. Keep /repo/ prefixes and local file previews working.
+  const homeURL = new URL("index.html", document.currentScript?.src || document.baseURI).href;
+  document.querySelectorAll("a.brand, a.site-footer__brand").forEach(link => {
+    link.href = homeURL;
+  });
+}
+
 function setupDemoLinks() {
   const notice = document.querySelector("#demo-notice");
   if (!notice) return;
@@ -410,6 +419,7 @@ function setupDemoLinks() {
   });
 }
 
+setupHomeLinks();
 setupHeader();
 if (document.querySelector("#hero-images")) setupHero();
 if (document.querySelector("#project-controls")) setupProjects();
