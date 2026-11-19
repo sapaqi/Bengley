@@ -387,27 +387,23 @@ function setupParallax() {
   syncMotion();
 }
 
-// Future-page URLs stay in the HTML for the WordPress handover.
-// A standard unmodified click in the demo receives a clear availability message.
+// Only explicitly marked, unsupplied content receives an availability message.
+// Normal navigation must work even when the optional route manifest is unavailable.
 function setupDemoLinks() {
   const notice = document.querySelector("#demo-notice");
-  const availablePages = new Set((window.previewPages || ["index.html"]).map(path => new URL(path, document.baseURI).href));
+  if (!notice) return;
   let timer;
   notice.querySelector("button").addEventListener("click", () => {
     notice.hidden = true;
     window.clearTimeout(timer);
   });
   document.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
+    const link = event.target.closest("a[data-demo-message]");
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const href = link.getAttribute("href");
     if (!href || href.startsWith("#") || href === "./" || link.origin !== window.location.origin || !["http:", "https:", "file:"].includes(link.protocol)) return;
-    const target = new URL(link.href);
-    target.hash = "";
-    target.search = "";
-    if (availablePages.has(target.href)) return;
     event.preventDefault();
-    notice.querySelector("p").textContent = link.dataset.demoMessage || "This detail page will be added in the next preview.";
+    notice.querySelector("p").textContent = link.dataset.demoMessage;
     notice.hidden = false;
     window.clearTimeout(timer);
     timer = window.setTimeout(() => { notice.hidden = true; }, 6500);

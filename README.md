@@ -28,7 +28,7 @@ Commit regenerated subpages and `page-manifest.js` whenever content definitions 
 - `pages.css` and `pages.js` contain the main subpage layouts, Portfolio filtering, testimonial controls, property gallery and article sharing.
 - `details.css` and `detail-pages.mjs` define the six inner-page layouts.
 - `final-pages.css` and `final-pages.mjs` define Publications, Social, job details, Latest news and Terms of use. Collection filtering and the community carousel are in `pages.js`.
-- `page-manifest.js` is generated alongside the HTML. It identifies implemented routes for the preview link handler.
+- `page-manifest.js` is generated alongside the HTML. It lists implemented routes for handover checks; navigation does not depend on loading this file.
 - The `portfolio`, `about-us`, `responsibility`, `working-with-us`, `media` and `contact-us` directories each contain a standalone `index.html`.
 - `build-pages.mjs` regenerates all subpages from their content definitions and the homepage header/footer. Run `node build-pages.mjs` after editing the shared shell or page definitions. The generated HTML is included and needs no build step to view.
 - `assets` contains the supplied SVGs, original photography and locally hosted Libre Franklin font with its OFL licence.
@@ -54,7 +54,7 @@ The fixture object is `demoData` at the top of `app.js`. Replace it at the templ
 
 The renderer demonstrates latest-three selection using three source news placeholders and one older fixture. The dates and repeated news copy follow the draft and need editorial replacement.
 
-All 38 generated pages are connected through the shared header and footer. The logo returns to Home. Relative `section/index.html` links and depth-aware subpage base URLs support both static hosting and opening the files directly. Preserve or replace this base deliberately when converting to CMS templates. Only missing PDF/VCF downloads and the unsupplied Privacy Statement retain availability messages. Remove `setupDemoLinks()` and the `demo-notice` element when the WordPress routes exist. Modified clicks follow the literal target URL. Verify all final slugs during integration.
+All 38 generated pages are connected through the shared header and footer. The logo returns to Home. Relative `section/index.html` links and depth-aware subpage base URLs support both static hosting and opening the files directly. Preserve or replace this base deliberately when converting to CMS templates. Only links explicitly marked with `data-demo-message` (missing PDF/VCF downloads and the unsupplied Privacy Statement) retain availability messages. All normal links navigate directly, including when the route manifest is missing or stale. Remove `setupDemoLinks()` and the `demo-notice` element when the WordPress routes exist. Modified clicks follow the literal target URL. Verify all final slugs during integration.
 
 ## Responsive and interaction decisions
 
@@ -142,3 +142,8 @@ All four existing job rows open detail pages. Their copy is draft source content
 Terms of use is transcribed from the supplied screenshot with broken encoding and split words cleaned up. It has not been rewritten as a new legal policy. Privacy Statement still needs supplied content. Source word-count notes and Marvel controls are excluded from all pages.
 
 The final five layouts were checked at 320, 390, 768 and 1760px widths with no horizontal document overflow. Publication type filtering, year filtering, batch loading, archive navigation, community dot/keyboard controls, role destinations and Terms navigation were exercised in the browser. Mail and phone targets were inspected without sending messages or placing calls. Browser console checks returned no warnings or errors. Static checks confirmed 38 reachable HTML pages, one H1 per page, unique IDs, correct current-section markers, matching route manifest and existing local asset paths. JavaScript syntax checks passed. No deployment was performed.
+
+
+## Navigation fix — 19 November 2026
+
+The availability handler now intercepts only explicitly marked missing content. Normal navigation no longer depends on `page-manifest.js`, and that script is no longer loaded by HTML pages. Replace the complete repository contents with the corrected package so the shared script and all generated pages stay in sync. The Netlify version inspected before this fix still contained older directory-style links. Hosted Portfolio itself was available when opened directly. Local browser checks covered Home → Portfolio, Media → Latest news and footer → Terms of use. The missing Privacy Statement notice remains intentional. An additional 56 regression checks covered absent/stale manifests, hosted repository subpaths, file previews, modified clicks and marked downloads.
